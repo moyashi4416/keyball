@@ -36,8 +36,8 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 #define TAP_CODE_DELAY 10 // ミリ秒 
 #define TAPPING_TERM 300 // ミリ秒
 #define DYNAMIC_KEYMAP_LAYER_COUNT 5
-#define KEYBALL_CPI_DEFAULT 400 // マウス速度 (default: 500)
-#define KEYBALL_SCROLL_DIV_DEFAULT 5 // スクロール速度 (default: 4)
+#define KEYBALL_CPI_DEFAULT 1100 // マウス速度 (default: 500)
+#define KEYBALL_SCROLL_DIV_DEFAULT 4 // スクロール速度 (default: 4)
 
 #define POINTING_DEVICE_AUTO_MOUSE_ENABLE // 有効化
 #define AUTO_MOUSE_DEFAULT_LAYER 2 // 切り替えるマウスレイヤー番号を指定

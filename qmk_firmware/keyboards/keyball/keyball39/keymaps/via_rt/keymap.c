@@ -87,19 +87,30 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 
 bool process_record_user(uint16_t keycode, keyrecord_t *record) {
     static uint8_t prev_cpi_value;
+    static uint8_t prev_scroll_div;
+
     switch (keycode) {
-    case QK_KB_18:
-        if (record->event.pressed) {
-            prev_cpi_value = keyball_get_cpi();
-            keyball_set_cpi(2); // 一時的に使うCPIを100で割った値を指定
-        } else {
-            keyball_set_cpi(prev_cpi_value);
-        }
-        return false;
-    default:
-        break;
+        case QK_KB_18:
+            if (record->event.pressed) {
+                prev_cpi_value = keyball_get_cpi();
+                keyball_set_cpi(2); // CPIを100で割った値（=200 CPI相当）
+            } else {
+                keyball_set_cpi(prev_cpi_value);
+            }
+            return false;
+
+        case QK_KB_19:
+            if (record->event.pressed) {
+                prev_scroll_div = keyball_get_scroll_div();
+                keyball_set_scroll_div(7); // D7 = 最遅
+            } else {
+                keyball_set_scroll_div(prev_scroll_div);
+            }
+            return false;
+
+        default:
+            return true;
     }
-    return true;
 }
 
 #ifdef OLED_ENABLE
