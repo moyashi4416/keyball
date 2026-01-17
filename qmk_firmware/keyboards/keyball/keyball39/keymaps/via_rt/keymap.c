@@ -93,7 +93,7 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
         case QK_KB_18:
             if (record->event.pressed) {
                 prev_cpi_value = keyball_get_cpi();
-                keyball_set_cpi(2); // CPIを100で割った値（=200 CPI相当）
+                keyball_set_cpi(2);
             } else {
                 keyball_set_cpi(prev_cpi_value);
             }
@@ -103,6 +103,15 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             if (record->event.pressed) {
                 prev_scroll_div = keyball_get_scroll_div();
                 keyball_set_scroll_div(7); // D7 = 最遅
+            } else {
+                keyball_set_scroll_div(prev_scroll_div);
+            }
+            return false;
+
+        case QK_KB_20:
+            if (record->event.pressed) {
+                prev_scroll_div = keyball_get_scroll_div();
+                keyball_set_scroll_div(0); // D0 = 最速
             } else {
                 keyball_set_scroll_div(prev_scroll_div);
             }
