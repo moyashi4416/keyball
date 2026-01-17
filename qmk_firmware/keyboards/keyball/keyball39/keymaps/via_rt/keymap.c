@@ -85,6 +85,22 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return state;
 }
 
+bool process_record_user(uint16_t keycode, keyrecord_t *record) {
+    static uint8_t prev_cpi_value;
+    switch (keycode) {
+    case QK_KB_18:
+        if (record->event.pressed) {
+            prev_cpi_value = keyball_get_cpi();
+            keyball_set_cpi(2); // 一時的に使うCPIを100で割った値を指定
+        } else {
+            keyball_set_cpi(prev_cpi_value);
+        }
+        return false;
+    default:
+        break;
+    }
+    return true;
+}
 
 #ifdef OLED_ENABLE
 
