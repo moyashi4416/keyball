@@ -108,14 +108,14 @@ bool process_record_user(uint16_t keycode, keyrecord_t *record) {
             }
             return false;
 
-        case QK_KB_20:
-            if (record->event.pressed) {
-                prev_scroll_div = keyball_get_scroll_div();
-                keyball_set_scroll_div(0); // D0 = 最速
-            } else {
-                keyball_set_scroll_div(prev_scroll_div);
-            }
-            return false;
+        // case QK_KB_20:
+        //     if (record->event.pressed) {
+        //         prev_scroll_div = keyball_get_scroll_div();
+        //         keyball_set_scroll_div(0); // D0 = 最速
+        //     } else {
+        //         keyball_set_scroll_div(prev_scroll_div);
+        //     }
+        //     return false;
 
         default:
             return true;
